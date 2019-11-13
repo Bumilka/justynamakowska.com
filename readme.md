@@ -15,7 +15,6 @@ Project is created with:
 * IdoSell Shop supports Smarty templates <https://www.smarty.net/>
 	
 ## Setup
-To run this project, install it locally using npm:
 
 ```
 $ git clone https://github.com/Bumilka/justynamakowska.com.git
