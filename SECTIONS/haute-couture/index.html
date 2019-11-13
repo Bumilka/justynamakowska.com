@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        /* ===== FONTS ===== */
+        @import url('https://fonts.googleapis.com/css?family=Marvel:400,700');
+
+        /* ========= VARIABLES ========= */
+        :root {
+            --main-color: black;
+            --border-width: .24vw;
+            --gutter: 2vw;
+        }
+
+        .haute-couture__section {
+            margin: 1.5vw 2vw 2vw;
+            font-family: 'Marvel', sans-serif;
+            font-weight: 700;
+        }
+
+        /* ==== GRID ==== */
+        .haute-couture__grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.167fr 0.45fr .225fr 0.3fr 0.8fr;
+            grid-template-rows: 0.44fr 0.1875fr 0.4fr .9fr;
+            grid-gap: var(--gutter);
+        }
+
+        .haute-couture__grid figure {
+            overflow: hidden;
+            background: var(--main-color);
+            position: relative;
+            opacity: 1;
+            transition: .2s;
+
+            /* Fix for Safari 10 */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .haute-couture__grid figure .haute-couture__picture {
+            vertical-align: middle;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .2s;
+            will-change: transform;
+            clip-path:
+                polygon(var(--border-width) var(--border-width),
+                    calc(100% - var(--border-width)) var(--border-width),
+                    calc(100% - var(--border-width)) calc(100% - var(--border-width)),
+                    var(--border-width) calc(100% - var(--border-width)));
+
+            /* Fix for Safari 10 */
+            flex-grow: 1;
+        }
+
+        figure:hover .haute-couture__picture {
+            transform: scale(.995);
+        }
+
+        /* ========= LAYOUT AND CLIP-PATH ======== */
+
+        .haute-couture__grid figure:nth-child(1) {
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+            clip-path: polygon(0 0, 100% 0, 100% 66%, 0% 85%);
+        }
+
+        .haute-couture__grid figure:nth-child(1) .haute-couture__picture {
+            clip-path:
+                polygon(var(--border-width) var(--border-width),
+                    calc(100% - var(--border-width)) var(--border-width),
+                    calc(100% - var(--border-width)) calc(66% - var(--border-width)),
+                    var(--border-width) calc(85% - var(--border-width)));
+            /*min-height: 30.5vw;*/
+        }
+
+        .haute-couture__grid figure:nth-child(2) {
+            grid-column: 2 / 4;
+            grid-row: 1 / 3;
+        }
+
+        .haute-couture__grid figure:nth-child(3) {
+            grid-column: 4 / 6;
+            grid-row: 1 / 2;
+        }
+
+        .haute-couture__grid figure:nth-child(4) {
+            grid-column: 1 / 2;
+            grid-row: 2 / 4;
+            clip-path: polygon(0 22%, 100% 4px, 100% 100%, 0% 100%);
+        }
+
+        .haute-couture__grid figure:nth-child(4) .haute-couture__picture {
+            clip-path:
+                polygon(var(--border-width) calc(22% + var(--border-width)),
+                    calc(100% - var(--border-width)) 7px,
+                    calc(100% - var(--border-width)) calc(100% - var(--border-width)),
+                    var(--border-width) calc(100% - var(--border-width)));
+        }
+
+        .haute-couture__grid figure:nth-child(5) {
+            grid-column: 2 / 4;
+            grid-row: 3 / 4;
+        }
+
+        .haute-couture__grid figure:nth-child(6) {
+            grid-column: 4 / 6;
+            grid-row: 2 / 4;
+        }
+
+        .haute-couture__grid figure:nth-child(7) {
+            grid-column: 1 / 2;
+            grid-row: 4 / 5;
+        }
+
+        .haute-couture__grid figure:nth-child(8) {
+            grid-column: 2 / 3;
+            grid-row: 4 / 5;
+            clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+            width: calc(250% + var(--gutter));
+        }
+
+        .haute-couture__grid figure:nth-child(8) .haute-couture__picture {
+            clip-path:
+                polygon(var(--border-width) var(--border-width),
+                    calc(100% - var(--border-width)) var(--border-width),
+                    calc(92% - var(--border-width)) calc(100% - var(--border-width)),
+                    var(--border-width) calc(100% - var(--border-width)));
+        }
+
+        .haute-couture__grid figure:nth-child(9) {
+            grid-column: 5 / 5;
+            grid-row: 4 / 5;
+            clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .haute-couture__grid figure:nth-child(9) .haute-couture__picture {
+            clip-path:
+                polygon(calc(12% + var(--border-width)) var(--border-width),
+                    calc(100% - var(--border-width)) var(--border-width),
+                    calc(100% - var(--border-width)) calc(100% - var(--border-width)),
+                    var(--border-width) calc(100% - var(--border-width)));
+        }
+
+        /* ======= CAPTION ======= */
+
+        .haute-couture__grid figcaption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .haute-couture__grid figure:nth-child(1) figcaption {
+            bottom: 15%;
+            height: 17%;
+            text-align: left;
+            padding-left: 5%;
+        }
+
+        .haute-couture__grid figcaption h3 {
+            font-weight: 700;
+            color: #fdfdfd;
+            margin-left: 10px;
+            font-size: calc(.5em + 1.7vw);
+            line-height: 1;
+        }
+
+        /* Caption effect */
+
+        figure:hover figcaption div {
+            transform: none;
+        }
+
+        figure:hover figcaption:before,
+        figure:hover figcaption:after {
+            transform: scaleY(1);
+        }
+
+        figcaption:before,
+        figcaption:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(237, 28, 36, 0.4);
+            height: 150%;
+            transition: .3s;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            z-index: -1;
+        }
+
+        figcaption:before {
+            clip-path: polygon(0% 0%, 100% 15%, 100% 100%, 0% 100%);
+        }
+
+        figcaption:after {
+            height: 120%;
+            background: rgba(237, 28, 36, 0.5);
+            clip-path: polygon(0% 15%, 100% 0%, 100% 100%, 0% 100%);
+        }
+
+        figcaption div {
+            margin: 0;
+            transition: .3s transform;
+            will-change: transform;
+            backface-visibility: hidden;
+        }
+
+        figcaption>div {
+            overflow: hidden;
+            display: inline-block;
+            transform: translateY(100%);
+        }
+
+        figcaption>div div {
+            transform: translateY(-100%);
+            display: inline-block;
+        }
+
+        /* ============== RESPONSIVENESS ============== */
+
+        @media (max-width: 800px) {
+            .haute-couture__grid figure:nth-child(1) figcaption {
+                padding-left: 0;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .haute-couture__grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 200px;
+                grid-auto-rows: 200px;
+            }
+
+            .haute-couture__grid figure {
+                grid-column: auto !important;
+                grid-row: auto !important;
+                clip-path: unset !important;
+            }
+
+            .haute-couture__grid figure:nth-child(2),
+            .haute-couture__grid figure:nth-child(8),
+            .haute-couture__grid figure:nth-child(9),
+            .haute-couture__grid figure:nth-child(10) {
+                grid-row: auto / span 2 !important;
+                width: auto;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .haute-couture__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .haute-couture__grid figure {
+                grid-column-end: div 1 !important;
+                grid-row: auto !important;
+            }
+        }
+
+
+        /* Usual suspects */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        a,
+        a:visited,
+        a:focus,
+        a:active,
+        a:link {
+            text-decoration: none;
+            outline: 0;
+        }
+
+        a {
+            color: var(--main-color);
+            transition: .2s ease-in-out;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin: 0 0 1vw;
+            font-weight: 700;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+    </style>
+
+    <section class="haute-couture__section haute-couture__grid">
+        <figure>
+            <img class="haute-couture__picture"
+                src="/justynamakowska.com/SECTIONS/data/include/cms/haute-couture/gabi-ballroom-2.jpg" alt="">
+            <figcaption>
+                <div>
+                    <div>
+                        <h3>Gabi</h3>
+                    </div>
+                </div>
+            </figcaption>
+        </figure>
+        <figure>
+            <img class="haute-couture__picture"
+                src="/justynamakowska.com/SECTIONS/data/include/cms/haute-couture/project-1.jpg" alt="">
+            <figcaption>
+                <div>
+                    <div>
+                        <h3>Latin Dress</h3>
+                    </div>
+                </div>
+            </figcaption>
+        </figure>
+        <figure>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/rW_4uAiKM_I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <figcaption>
+                <div>
+                    <div>
+                        <h3>Sandra Antosik & Kamil Spodniewski</h3>
+                    </div>
+                </div>
+            </figcaption>
+        </figure>
+        <figure>
+            <img class="haute-couture__picture"
+                src="/justynamakowska.com/SECTIONS/data/include/cms/haute-couture/gabi-ballroom.jpg" alt="">
+            <figcaption>
+                <div>
+                    <div>
+                        <h3>Ballroom Dress</h3>
+                    </div>
+                </div>
+            </figcaption>
+        </figure>
+        <figure>
+            <img class="haute-couture__picture"
+                src="/justynamakowska.com/SECTIONS/data/include/cms/haute-couture/project-2.jpg" alt="">
+            <figcaption>
+                <div>
+                    <div>
+                        <h3>Project</h3>
+                    </div>
+                </div>
+            </figcaption>
+        </figure>
+        <figure>
+            <img class="haute-couture__picture"
+                src="/justynamakowska.com/SECTIONS/data/include/cms/haute-couture/sandra-antosik-lace.jpg" alt="">
+            <figcaption>
+                <div>
+                    <div>
+                        <h3>Sandra Antosik & Kamil Spodniewski</h3>
+                    </div>
+                </div>
+            </figcaption>
+        </figure>
+        <!---->
+        <figure>
+            <img class="haute-couture__picture"
+                src="/justynamakowska.com/SECTIONS/data/include/cms/haute-couture/sandra-antosik-velur.jpg" alt="">
+            <figcaption>
+                <div>
+                    <div>
+                        <h3>Juvenile Ballroom Dress</h3>
+                    </div>
+                </div>
+            </figcaption>
+        </figure>
+        <figure>
+            <img class="haute-couture__picture"
+                src="/justynamakowska.com/SECTIONS/data/include/cms/haute-couture/sandra-antosik-ballroom.jpg" alt="">
+            <figcaption>
+                <div>
+                    <div>
+                        <h3>Ballroom</h3>
+                    </div>
+                </div>
+            </figcaption>
+        </figure>
+        <figure>
+            <img class="haute-couture__picture"
+                src="/justynamakowska.com/SECTIONS/data/include/cms/haute-couture/sandra-antosik-lace-2.jpg" alt="">
+            <figcaption>
+                <div>
+                    <div>
+                        <h3>Sandra Antosik</h3>
+                    </div>
+                </div>
+            </figcaption>
+        </figure>
+    </section>
+</body>
+
+</html>

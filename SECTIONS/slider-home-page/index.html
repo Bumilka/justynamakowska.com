@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .slider--container {
+            position: relative; /* "relative", so that h1 and images can be set absolutely */
+            height: 90vh; /* Adjust the height to your needs here */
+            width: 100%; /* Adjust the width to your needs here */
+            margin: 0 auto;
+            overflow: hidden;
+            box-shadow: 0 0 .1rem .125rem rgba(0, 0, 0, 0.25);
+        }
+        .slider--heading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            padding: 1rem;
+            z-index: 99;
+            font: 300 2.25rem/1.25;
+            text-align: center;
+
+            color: rgba(0, 0, 0, 0.5);
+            transform: translate3d(-50%, -50%, 0);
+        }
+        .slider--heading h1 {
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.911);
+        }
+            /* Responsive styles for the heading */
+            /* ===== == = === 30em (480px) === = == ===== */
+            @media only screen and (min-width : 30em) {
+                .slider--heading h1 {font-size: 1.5rem;}
+            }
+            /* ===== == = === 48em (768px) === = == ===== */
+            @media only screen and (min-width : 48em) {
+                .slider--heading h1 {font-size: 2.75rem;}
+            }
+        
+        .btn {
+            margin: 1rem;
+            padding: .5rem;
+            font-size: .75rem;
+            text-decoration:none;
+            text-shadow: 1px 1px 1px #999999;
+            background: transparent;
+            border-radius: 0px;
+            box-shadow: 0 0 2px 1px rgb(3, 3, 3);
+            color: rgba(255, 255, 255, 0.726);
+            
+        }
+            /* Responsive styles for the button */
+            /* ===== == = === 30em (480px) === = == ===== */
+            @media only screen and (min-width : 30em) {
+                .btn {
+                    font-size: 1rem;
+                }
+            }
+            /* ===== == = === 48em (768px) === = == ===== */
+            @media only screen and (min-width : 48em) {
+                .btn {
+                    font-size: 1.7rem;
+                }
+            }
+        .btn:hover {
+            text-decoration: none;
+            color:  rgba(237, 28, 36, 0.4);
+        }
+        .slider--image {
+            position: absolute;
+            z-index: 1;
+            left:0;
+            top:0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            animation: 45s ease-in-out infinite;
+        } 
+         /* Name of animations and selection of images */
+        .slider--image:nth-of-type(1) {
+            animation-name: slide-01;
+        }
+        .slider--image:nth-of-type(2) {
+            animation-name: slide-02;
+        }
+        .slider--image:nth-of-type(3) {
+            animation-name: slide-03;
+        }
+        
+        /* Images are overlaid and visible or invisible due to different transparency */
+        /* Moving the images with transform: scale & translate */
+            /* Styles for webkit browsers */
+        @-webkit-keyframes slide-01 {
+            0%  { opacity:1; -webkit-transform: scale(1.4) translate(0, 0);}
+            16%  {opacity:1; -webkit-transform: scale(1.2) translate(-20px, -10px);}
+            33%  {opacity:0; -webkit-transform: scale(1.4) translate(0, 0);}
+            50%  {opacity:0;}
+            67%  {opacity:0;}
+            84%  {opacity:0;}
+            100%  {opacity:1; -webkit-transform: scale(1.4) translate(0, 0);}
+        }
+        @-webkit-keyframes slide-02 {
+            0%  { opacity:0;}
+            16%  {opacity:0; -webkit-transform: scale(1.2) translate(-20px, -10px);}
+            33%  {opacity:1; -webkit-transform: scale(1.4) translate(0, 0);}
+            50%  {opacity:1; -webkit-transform: scale(1.2) translate(-20px, 10px);}
+            67%  {opacity:0; -webkit-transform: scale(1.4) translate(0, 0);}
+            84%  {opacity:0;}
+            100%  {opacity:0;}
+        }
+        @-webkit-keyframes slide-03 {
+            0%  { opacity:0;}
+            16%  {opacity:0;}
+            33%  {opacity:0;}
+            50%  {opacity:0; -webkit-transform: scale(1.4) translate(0, 0);}
+            67%  {opacity:1; -webkit-transform: scale(1.4) translate(-20px, 10px);}
+            84%  {opacity:1; -webkit-transform: scale(1.2) translate(20px, -10px);}
+            100%  {opacity:0; -webkit-transform: scale(1.4) translate(0, 0);}
+        }
+        
+            /* Styles for all other browsers */
+        @keyframes slide-01 {
+            0%  { opacity:1; transform: scale(1.4) translate(0, 0);}
+            16%  {opacity:1; transform: scale(1.2) translate(-20px, -10px);}
+            33%  {opacity:0; transform: scale(1.4) translate(0, 0);}
+            50%  {opacity:0;}
+            67%  {opacity:0;}
+            84%  {opacity:0;}
+            100%  {opacity:1; transform: scale(1.4) translate(0, 0);}
+        }
+        @keyframes slide-02 {
+            0%  { opacity:0;}
+            16%  {opacity:0; transform: scale(1.2) translate(-20px, -10px);}
+            33%  {opacity:1; transform: scale(1.4) translate(0, 0);}
+            50%  {opacity:1; transform: scale(1.2) translate(-20px, 10px);}
+            67%  {opacity:0; transform: scale(1.4) translate(0, 0);}
+            84%  {opacity:0;}
+            100%  {opacity:0;}
+        }
+        @keyframes slide-03 {
+            0%  { opacity:0;}
+            16%  {opacity:0;}
+            33%  {opacity:0;}
+            50%  {opacity:0; transform: scale(1.4) translate(0, 0);}
+            67%  {opacity:1; transform: scale(1.4) translate(-20px, 10px);}
+            84%  {opacity:1; transform: scale(1.2) translate(20px, -10px);}
+            100%  {opacity:0; transform: scale(1.4) translate(0, 0);}
+        }
+        </style>
+            <div class="slider--container">
+                <div class="slider--heading">
+                    <h1 class="">DANCEWEAR COLLECTION</h1>
+                    <a class="btn" href="https://justynamakowska.com/eng_m_DANCEWEAR_WOMAN-180.html">CHECK</a>
+                </div>
+                <img class="slider--image" src="/justynamakowska.com/SECTIONS/data/include/cms/slider-home-page/slider-dance2-desctop.jpg" alt="slider-01" />
+                <img class="slider--image" src="/justynamakowska.com/SECTIONS/data/include/cms/slider-home-page/slider-dance-desctop.jpg" alt="slider-02" />
+                <img class="slider--image" src="/justynamakowska.com/SECTIONS/data/include/cms/slider-home-page/slider-dance3-desctop.jpg"  alt="slider-03" />
+            </div>
+        
+</body>
+</html>
