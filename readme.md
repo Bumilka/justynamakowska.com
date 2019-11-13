@@ -4,9 +4,9 @@
 * [Setup](#setup)
 
 ## General info
-Website:  <https://justynamakowska.com/>
-Online store with women's clothes and dance's clothes from a fashion designer Justyna Makowska
-The e-store works on the Saas system (Software as a Service). Saas system supports Smarty templates.
+*  Website:  <https://justynamakowska.com/>
+*  Online store with women's clothes and dance's clothes from a fashion designer Justyna Makowska
+*  The e-store works on the Saas system (Software as a Service). Saas system supports Smarty templates.
 	
 ## Technologies
 Project is created with:
